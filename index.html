@@ -12,68 +12,73 @@
         header { background: var(--primary); color: white; padding: 20px; text-align: center; }
         h1 { margin: 0; font-size: 20px; }
         p { margin: 5px 0 0 0; font-size: 13px; opacity: 0.85; }
-        .container { max-width: 900px; margin: 20px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .nav-tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px; overflow-x: auto; }
-        .tab-btn { background: #e0e0e0; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 13px; }
+        .container { max-width: 950px; margin: 15px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .nav-tabs { display: flex; gap: 8px; margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px; overflow-x: auto; }
+        .tab-btn { background: #e0e0e0; border: none; padding: 10px 14px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 12px; white-space: nowrap; }
         .tab-btn.active { background: var(--primary); color: white; }
         .section { display: none; }
         .section.active { display: block; }
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 13px; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 12px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background: var(--primary); color: white; }
         tr:nth-child(even) { background: #f9f9f9; }
-        .badge { padding: 4px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; }
+        .badge { padding: 3px 6px; border-radius: 4px; font-size: 10px; font-weight: bold; }
         .badge-pending { background: #ffc107; color: #000; }
         .badge-approved { background: #28a745; color: white; }
         .badge-rectified { background: #17a2b8; color: white; }
+        .checklist-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #eee; font-size: 13px; }
+        .checklist-item input { margin-top: 3px; transform: scale(1.2); }
+        .checklist-item label { cursor: pointer; }
+        .subline { font-size: 11px; color: #666; margin-top: 2px; }
     </style>
 </head>
 <body>
     <header>
-        <h1>Semera Airport Terminal & ARFF Renovation Project</h1>
-        <p>Authorized Secured System | SQS: Yitayal Birhanu &bull; RE: Kirubel</p>
+        <h1>Semera Airport Terminal & ARFF Renovation</h1>
+        <p>SQS: Yitayal Birhanu &bull; RE: Kirubel (&bull; Offline PWA Active)</p>
     </header>
 
     <div class="container">
         <div class="nav-tabs">
-            <button class="tab-btn active" onclick="switchTab('dashboard')">Summary Dashboard</button>
+            <button class="tab-btn active" onclick="switchTab('dashboard')">BOQ Summary</button>
             <button class="tab-btn" onclick="switchTab('permissions')">Team Permissions</button>
-            <button class="tab-btn" onclick="switchTab('ai-log')">AI Vision & Photo Log</button>
-            <button class="tab-btn" onclick="switchTab('checklists')">Discipline Checklists</button>
+            <button class="tab-btn" onclick="switchTab('ai-log')">AI Photo Log</button>
+            <button class="tab-btn" onclick="switchTab('checklists')">Discipline Checklists (70+ Items)</button>
         </div>
 
+        <!-- TAB 1: DASHBOARD -->
         <div id="dashboard" class="section active">
-            <h2>BOQ Summary & Financial Reconciliation (~1.29B ETB)</h2>
+            <h2>Financial & Physical Reconciliation (~1.29B ETB)</h2>
             <p>Overall Physical Progress: <strong>81.65%</strong> | Sprint Window: Nov 18–24, 2026</p>
             <table>
                 <tr><th>Item</th><th>Work Package</th><th>Contract (ETB)</th><th>Progress</th><th>Status</th></tr>
-                <tr><td>1</td><td>Demolishing work</td><td>9,900,000.00</td><td>99.2%</td><td><span class="badge badge-approved">Nearly Complete</span></td></tr>
-                <tr><td>2</td><td>Structure works</td><td>11,333,775.92</td><td>99.7%</td><td><span class="badge badge-approved">Nearly Complete</span></td></tr>
+                <tr><td>1</td><td>Demolishing work</td><td>9,900,000.00</td><td>99.2%</td><td><span class="badge badge-approved">Almost Done</span></td></tr>
+                <tr><td>2</td><td>Structure works</td><td>11,333,775.92</td><td>99.7%</td><td><span class="badge badge-approved">Almost Done</span></td></tr>
                 <tr><td>3</td><td>Finishing work</td><td>239,123,163.72</td><td>91.5%</td><td><span class="badge badge-rectified">In Progress</span></td></tr>
                 <tr><td>4</td><td>ACMV work</td><td>155,119,536.00</td><td>69.3%</td><td><span class="badge badge-pending">In Progress</span></td></tr>
                 <tr><td>5</td><td>Firefighting system work</td><td>15,759,998.65</td><td>55.0%</td><td><span class="badge badge-pending">In Progress</span></td></tr>
                 <tr><td>6</td><td>Plumbing & sanitary works</td><td>19,748,183.62</td><td>82.3%</td><td><span class="badge badge-rectified">In Progress</span></td></tr>
                 <tr><td>7</td><td>Electrical & ICT works</td><td>415,403,544.80</td><td>63.9%</td><td><span class="badge badge-pending">In Progress</span></td></tr>
-                <tr><td>8</td><td>External works</td><td>275,204,660.39</td><td>97.1%</td><td><span class="badge badge-approved">Nearly Complete</span></td></tr>
+                <tr><td>8</td><td>External works</td><td>275,204,660.39</td><td>97.1%</td><td><span class="badge badge-approved">Almost Done</span></td></tr>
                 <tr><td>9</td><td>Design fee</td><td>38,925,979.96</td><td>100.0%</td><td><span class="badge badge-approved">Completed</span></td></tr>
-                <tr><td>10</td><td>Security fence & watch tower</td><td>114,113,122.30</td><td>99.2%</td><td><span class="badge badge-approved">Nearly Complete</span></td></tr>
+                <tr><td>10</td><td>Security fence & watch tower</td><td>114,113,122.30</td><td>99.2%</td><td><span class="badge badge-approved">Almost Done</span></td></tr>
             </table>
         </div>
 
+        <!-- TAB 2: PERMISSIONS -->
         <div id="permissions" class="section">
             <h2>Authorized Project Team (Strict Data Isolation)</h2>
             <table>
                 <tr><th>Role / Discipline</th><th>Name</th><th>Access Level</th><th>Status</th></tr>
-                <tr><td>Senior Quantity Surveyor (SQS)</td><td>Yitayal Birhanu</td><td>Full Control / Owner</td><td><span class="badge badge-approved">AUTHORIZED</span></td></tr>
-                <tr><td>Resident Engineer (RE)</td><td>Kirubel (@kiru1921)</td><td>Editor / Update Access</td><td><span class="badge badge-approved">AUTHORIZED</span></td></tr>
-                <tr><td>Electrical & ICT Engineer</td><td>[ Vacant ]</td><td>Pending</td><td><span class="badge badge-pending">RESERVED</span></td></tr>
-                <tr><td>ACMV & Mechanical Engineer</td><td>[ Vacant ]</td><td>Pending</td><td><span class="badge badge-pending">RESERVED</span></td></tr>
+                <tr><td>Senior Quantity Surveyor (SQS)</td><td>Yitayal Birhanu</td><td>Full Control / Admin</td><td><span class="badge badge-approved">AUTHORIZED</span></td></tr>
+                <tr><td>Resident Engineer (RE)</td><td>Kirubel (@kiru1921)</td><td>Editor / Site Sign-off</td><td><span class="badge badge-approved">AUTHORIZED</span></td></tr>
             </table>
         </div>
 
+        <!-- TAB 3: AI PHOTO LOG -->
         <div id="ai-log" class="section">
             <h2>AI Photo Vision & Defect Log</h2>
-            <p>Upload site photos during morning walkthroughs for automated defect analysis and status tracking.</p>
+            <p>Upload site photos during walkthroughs for automated defect analysis.</p>
             <input type="file" id="photoInput" accept="image/*" style="margin: 15px 0;" onchange="handlePhotoUpload(event)">
             <div id="photoPreview" style="margin-top: 15px;"></div>
             <table>
@@ -83,17 +88,67 @@
             </table>
         </div>
 
+        <!-- TAB 4: CHECKLISTS -->
         <div id="checklists" class="section">
-            <h2>Discipline Checklists & Room Inspection Hub</h2>
-            <p>Select a discipline book to review itemized inspection criteria and sign-offs.</p>
-            <ul>
-                <li><strong>Architectural Finishes:</strong> Granite joints, ceiling grids, door locksets</li>
-                <li><strong>Electrical & ICT:</strong> Server room grounding, sub-circuit panels, lighting</li>
-                <li><strong>ACMV & Mechanical:</strong> Duct insulation, chilled water pressure tests</li>
-                <li><strong>Plumbing & Sanitary:</strong> Drainage gradients, sensor flush units</li>
-                <li><strong>Firefighting Systems:</strong> Pump set, suppression network, sprinklers</li>
-                <li><strong>External Works:</strong> Apron paving, road markings, perimeter fence</li>
-            </ul>
+            <h2>Comprehensive Inspection & Snag Checklist</h2>
+            <p>Interactive check items for SI 017 urgent snags and trade inspections.</p>
+            
+            <div style="margin: 15px 0;">
+                <label><strong>Filter by Category:</strong></label>
+                <select id="categoryFilter" onchange="filterChecklist()" style="padding: 6px; font-size: 12px; margin-left: 10px;">
+                    <option value="all">All Categories</option>
+                    <option value="Urgent Snags">Urgent Snags (SI 017)</option>
+                    <option value="Plumbing">Plumbing & Sanitary</option>
+                    <option value="Architectural">Architectural & Finishes</option>
+                    <option value="Mechanical">Mechanical & HVAC</option>
+                    <option value="Electrical">ICT, Electrical & ELV</option>
+                </select>
+            </div>
+
+            <div id="checklistContainer">
+                <div class="checklist-item" data-cat="Urgent Snags">
+                    <input type="checkbox" id="chk1" checked>
+                    <div>
+                        <label for="chk1"><strong>Terminal-Wide Electrical & Office Zones</strong> — Power Interruption Rectification</label>
+                        <div class="subline">Test sub-circuit breakers, verify load balancing, and stabilize power lines (48h deadline)</div>
+                    </div>
+                </div>
+                <div class="checklist-item" data-cat="Urgent Snags">
+                    <input type="checkbox" id="chk2" checked>
+                    <div>
+                        <label for="chk2"><strong>All Terminal & Office Doors</strong> — Missing Locksets & Hardware</label>
+                        <div class="subline">Procure and install approved heavy-duty cylinder locksets, handles, and striking plates</div>
+                    </div>
+                </div>
+                <div class="checklist-item" data-cat="Plumbing">
+                    <input type="checkbox" id="chk3">
+                    <div>
+                        <label for="chk3"><strong>Office Toilets</strong> — Urinal Backflow & Drainage Overflow</label>
+                        <div class="subline">Flush main drainage lines, correct negative pipe grading, and install vent stacks</div>
+                    </div>
+                </div>
+                <div class="checklist-item" data-cat="Architectural">
+                    <input type="checkbox" id="chk4">
+                    <div>
+                        <label for="chk4"><strong>Granite Floor Expansion Joints</strong> — Sealant Execution</label>
+                        <div class="subline">Execute floor expansion joint cutting and elastomeric sealant filling</div>
+                    </div>
+                </div>
+                <div class="checklist-item" data-cat="Mechanical">
+                    <input type="checkbox" id="chk5">
+                    <div>
+                        <label for="chk5"><strong>Mezzanine AHU Ductwork Connection</strong> — Fitting & Sealing</label>
+                        <div class="subline">Fit and seal duct connections between Mezzanine AHU and supply/return network</div>
+                    </div>
+                </div>
+                <div class="checklist-item" data-cat="Electrical">
+                    <input type="checkbox" id="chk6">
+                    <div>
+                        <label for="chk6"><strong>Server Room Cable Management</strong> — ELV & CCTV Mounting</label>
+                        <div class="subline">Dress ICT cabling, secure patch panels/ladders, and complete all check-in/veranda light fixtures</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -114,6 +169,17 @@
                 }
                 reader.readAsDataURL(file);
             }
+        }
+        function filterChecklist() {
+            const val = document.getElementById('categoryFilter').value;
+            const items = document.querySelectorAll('.checklist-item');
+            items.forEach(item => {
+                if (val === 'all' || item.getAttribute('data-cat') === val) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
         }
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
